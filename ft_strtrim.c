@@ -6,7 +6,7 @@
 /*   By: hyunwkim <hyunwkim@42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/06 16:00:16 by hyunwkim          #+#    #+#             */
-/*   Updated: 2021/05/21 21:37:30 by hyunwkim         ###   ########.fr       */
+/*   Updated: 2021/06/05 16:32:37 by hyunwkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ size_t			count_set(const char *s, const char *set, size_t i)
 char			*ft_strtrim(char const *s1, char const *set)
 {
 	char		*ptr;
-	size_t		idx;
 	size_t		front_len;
 	size_t		rear_len;
 
@@ -46,12 +45,6 @@ char			*ft_strtrim(char const *s1, char const *set)
 	rear_len = count_set(s1 + ft_strlen(s1) - 1, set, -1);
 	if (!(ptr = (char *)malloc((ft_strlen(s1) - front_len - rear_len + 1))))
 		return (NULL);
-	idx = 0;
-	while (s1[idx + front_len] && idx < ft_strlen(s1) - front_len - rear_len)
-	{
-		ptr[idx] = s1[idx + front_len];
-		idx++;
-	}
-	ptr[idx] = 0;
+	ft_strlcpy(ptr, s1 + front_len, ft_strlen(s1) - front_len - rear_len + 1);
 	return (ptr);
 }

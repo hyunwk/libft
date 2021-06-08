@@ -6,13 +6,27 @@
 /*   By: hyunwkim <hyunwkim@42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/11 17:16:37 by hyunwkim          #+#    #+#             */
-/*   Updated: 2021/05/20 18:56:54 by hyunwkim         ###   ########.fr       */
+/*   Updated: 2021/06/08 15:36:40 by hyunwkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int			get_len(char const *s, char set, int *i)
+static char	**freeall(char **s)
+{
+	int		i;
+
+	i = 0;
+	while (s[i])
+	{
+		free(s[i]);
+		i++;
+	}
+	free(s);
+	return (0);
+}
+
+static int	get_len(char const *s, char set, int *i)
 {
 	int		j;
 	int		len;
@@ -30,7 +44,7 @@ int			get_len(char const *s, char set, int *i)
 	return (len);
 }
 
-char		*alloc_str(char	const *s, char c, int *idx)
+static char	*alloc_str(char	const *s, char c, int *idx)
 {
 	char	*p;
 	int		len;
@@ -69,10 +83,7 @@ char		**ft_split(char const *s, char c)
 	while (idx < word_cnt)
 	{
 		if (!(ptr[idx++] = alloc_str(s, c, &word_len)))
-		{
-			free(ptr[idx - 1]);
-			return (ptr);
-		}
+			return (freeall(ptr));
 	}
 	ptr[idx] = 0;
 	return (ptr);

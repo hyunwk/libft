@@ -6,9 +6,11 @@
 /*   By: hyunwkim <hyunwkim@42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/04 14:47:27 by hyunwkim          #+#    #+#             */
-/*   Updated: 2021/05/04 14:48:01 by hyunwkim         ###   ########.fr       */
+/*   Updated: 2021/06/08 15:18:50 by hyunwkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 int		ft_tolower(int c)
 {

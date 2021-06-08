@@ -6,7 +6,7 @@
 /*   By: hyunwkim <hyunwkim@42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/06 16:00:16 by hyunwkim          #+#    #+#             */
-/*   Updated: 2021/06/07 22:41:01 by hyunwkim         ###   ########.fr       */
+/*   Updated: 2021/06/08 15:08:42 by hyunwkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,13 @@ char			*ft_strtrim(char const *s1, char const *set)
 
 	front = 0;
 	rear = ft_strlen(s1) - 1;
-	if (!set)
-		return ((char *)s1);
-	while (s1[front] && ft_strrchr(set, s1[front]))
+	if (!set || !s1)
+		return (0);
+	while (s1[front] && ft_strchr(set, s1[front]))
 		front++;
-	if (!s1 || front == ft_strlen(s1))
+	if (front == ft_strlen(s1))
 		return (ft_strdup(""));
-	while (s1[rear] && ft_strrchr(set, s1[rear]))
+	while (s1[rear] && ft_strchr(set, s1[rear]))
 		rear--;
 	return (ft_substr(s1, front, rear - front + 1));
 }

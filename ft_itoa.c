@@ -6,13 +6,13 @@
 /*   By: hyunwkim <hyunwkim@42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/06 19:36:03 by hyunwkim          #+#    #+#             */
-/*   Updated: 2021/05/19 18:32:10 by hyunwkim         ###   ########.fr       */
+/*   Updated: 2021/06/08 15:30:32 by hyunwkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char				*alloc(int word_len, int sign, unsigned int num)
+static	char		*alloc(int word_len, int sign, unsigned int num)
 {
 	int				idx;
 	char			*p;
@@ -36,7 +36,6 @@ char				*ft_itoa(int n)
 	int				sign;
 	int				word_len;
 	unsigned int	num;
-	char			*ptr;
 
 	sign = 0;
 	word_len = 0;
@@ -54,6 +53,5 @@ char				*ft_itoa(int n)
 		n /= 10;
 		word_len++;
 	}
-	ptr = alloc(word_len, sign, num);
-	return (ptr);
+	return (alloc(word_len, sign, num));
 }

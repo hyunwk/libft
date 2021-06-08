@@ -6,7 +6,7 @@
 /*   By: hyunwkim <hyunwkim@42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/06 15:21:10 by hyunwkim          #+#    #+#             */
-/*   Updated: 2021/05/20 17:57:32 by hyunwkim         ###   ########.fr       */
+/*   Updated: 2021/06/08 15:22:29 by hyunwkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,7 @@ char				*ft_substr(char const *s, unsigned int start, size_t len)
 	if (!s)
 		return (0);
 	if ((unsigned int)ft_strlen(s) <= start)
-	{
-		ptr = ft_strdup("");
-		return (ptr);
-	}
+		return (ft_strdup(""));
 	s_len = ft_strlen(s + start);
 	if (s_len > len)
 		s_len = len;

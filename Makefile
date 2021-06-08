@@ -1,8 +1,21 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: hyunwkim <hyunwkim@42seoul.kr>             +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2021/06/08 16:05:10 by hyunwkim          #+#    #+#              #
+#    Updated: 2021/06/08 16:14:46 by hyunwkim         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 NAME = libft.a
-CC = GCC
-CFLAGS = -Wall -Werror -Wextra
-AR = ar
-ARFLAGS = rcs
+
+CC = gcc
+CFLAGS = -Wall -Wextra -Werror
+AR = ar rcs
+RM = rm -f
 
 FUNC =	ft_memset\
 		ft_bzero \
@@ -51,24 +64,28 @@ FUNC_BONUS = ft_lstnew\
 
 SRCS = $(addsuffix .c, $(FUNC))
 SRCS_BONUS = $(addsuffix .c, $(FUNC_BONUS))
-OBJS= $(addsuffix .o, $(FUNC))
+
+OBJS = $(addsuffix .o, $(FUNC))
 OBJS_BONUS = $(addsuffix .o, $(FUNC_BONUS))
 
-.c.o : $(SRCS) $(SRCS_BONUS) 
-	$(CC) $(CFLAGS) -c -o $@ $^
 
-all : $(NAME)
+.c.o: $(SRCS)
+	$(CC) $(CFLAGS) -c -o $@ $<
 
-$(NAME) : $(OBJS)
-	$(AR) $(ARFLAGS) $@ $^
+$(NAME): $(OBJS)
+	$(AR) $@ $^
 
-bonus :  $(OBJS_BONUS)
-	$(AR) $(ARFLAGS) $(NAME) $^
+bonus: $(OBJS_BONUS)
+	$(AR) $(NAME) $^
 
-clean :
-	rm -f $(OBJS) $(OBJS_BONUS)
+all: $(NAME)
 
-fclean : clean 
-	rm -f $(NAME)
+clean:
+	$(RM) $(OBJS) $(OBJS_BONUS)
 
-re : fclean all
+fclean: clean
+	$(RM) $(NAME)
+
+re: clean all
+
+.PHONY: bonus all clean fclean re

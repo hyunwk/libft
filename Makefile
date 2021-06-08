@@ -6,15 +6,15 @@
 #    By: hyunwkim <hyunwkim@42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/08 16:05:10 by hyunwkim          #+#    #+#              #
-#    Updated: 2021/06/08 16:14:46 by hyunwkim         ###   ########.fr        #
+#    Updated: 2021/06/08 19:07:23 by hyunwkim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libft.a
-
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
-AR = ar rcs
+AR = ar 
+ARFLAGS = rcs
 RM = rm -f
 
 FUNC =	ft_memset\
@@ -68,17 +68,22 @@ SRCS_BONUS = $(addsuffix .c, $(FUNC_BONUS))
 OBJS = $(addsuffix .o, $(FUNC))
 OBJS_BONUS = $(addsuffix .o, $(FUNC_BONUS))
 
+ifdef WITH_BONUS
+	OBJS_FILES = $(OBJS) $(OBJS_BONUS)
+else
+	OBJS_FILES = $(OBJS)
+endif
 
 .c.o: $(SRCS)
 	$(CC) $(CFLAGS) -c -o $@ $<
 
-$(NAME): $(OBJS)
-	$(AR) $@ $^
-
-bonus: $(OBJS_BONUS)
-	$(AR) $(NAME) $^
-
 all: $(NAME)
+
+$(NAME): $(OBJS_FILES)
+	$(AR) $(ARFLAGS) $@ $^
+
+bonus: 
+	make WITH_BONUS=1 all
 
 clean:
 	$(RM) $(OBJS) $(OBJS_BONUS)

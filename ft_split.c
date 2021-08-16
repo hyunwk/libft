@@ -6,13 +6,13 @@
 /*   By: hyunwkim <hyunwkim@42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/11 17:16:37 by hyunwkim          #+#    #+#             */
-/*   Updated: 2021/05/20 18:56:54 by hyunwkim         ###   ########.fr       */
+/*   Updated: 2021/08/16 17:48:39 by hyunwkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int			get_len(char const *s, char set, int *i)
+int	get_len(char const *s, char set, int *i)
 {
 	int		j;
 	int		len;
@@ -30,7 +30,7 @@ int			get_len(char const *s, char set, int *i)
 	return (len);
 }
 
-char		*alloc_str(char	const *s, char c, int *idx)
+char	*alloc_str(char	const *s, char c, int *idx)
 {
 	char	*p;
 	int		len;
@@ -38,7 +38,8 @@ char		*alloc_str(char	const *s, char c, int *idx)
 
 	i = 0;
 	len = get_len(s + *idx, c, idx);
-	if (!(p = (char *)malloc(sizeof(char) * (len + 1))))
+	p = (char *)malloc(sizeof(char) * (len + 1));
+	if (!p)
 		return (0);
 	while (i < len)
 	{
@@ -49,7 +50,7 @@ char		*alloc_str(char	const *s, char c, int *idx)
 	return (p);
 }
 
-char		**ft_split(char const *s, char c)
+char	**ft_split(char const *s, char c)
 {
 	char	**ptr;
 	int		word_cnt;
@@ -63,16 +64,15 @@ char		**ft_split(char const *s, char c)
 	idx = 0;
 	while (get_len(s + idx, c, &idx))
 		word_cnt++;
-	if (!(ptr = (char **)malloc(sizeof(char *) * (word_cnt + 1))))
+	ptr = (char **)malloc(sizeof(char *) * (word_cnt + 1));
+	if (!ptr)
 		return (0);
 	idx = 0;
 	while (idx < word_cnt)
 	{
-		if (!(ptr[idx++] = alloc_str(s, c, &word_len)))
-		{
+		ptr[idx++] = alloc_str(s, c, &word_len);
+		if (!ptr[idx - 1])
 			free(ptr[idx - 1]);
-			return (ptr);
-		}
 	}
 	ptr[idx] = 0;
 	return (ptr);

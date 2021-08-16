@@ -6,7 +6,7 @@
 /*   By: hyunwkim <hyunwkim@42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/06 16:00:16 by hyunwkim          #+#    #+#             */
-/*   Updated: 2021/06/05 16:32:37 by hyunwkim         ###   ########.fr       */
+/*   Updated: 2021/06/07 17:21:29 by hyunwkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,9 @@ char			*ft_strtrim(char const *s1, char const *set)
 	if (front_len == ft_strlen(s1))
 		return (ft_strdup(""));
 	rear_len = count_set(s1 + ft_strlen(s1) - 1, set, -1);
-	if (!(ptr = (char *)malloc((ft_strlen(s1) - front_len - rear_len + 1))))
-		return (NULL);
-	ft_strlcpy(ptr, s1 + front_len, ft_strlen(s1) - front_len - rear_len + 1);
+//	if (!(ptr = (char *)malloc((ft_strlen(s1) - front_len - rear_len + 1))))
+//		return (NULL);
+//	ft_strlcpy(ptr, s1 + front_len, ft_strlen(s1) - front_len - rear_len + 1);
+	ptr = ft_substr(s1, front_len, rear_len);
 	return (ptr);
 }

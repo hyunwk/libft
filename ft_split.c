@@ -6,11 +6,25 @@
 /*   By: hyunwkim <hyunwkim@42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/11 17:16:37 by hyunwkim          #+#    #+#             */
-/*   Updated: 2021/08/16 17:48:39 by hyunwkim         ###   ########.fr       */
+/*   Updated: 2021/08/16 17:51:44 by hyunwkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+char	**freeall(char **s)
+{
+	int		i;
+
+	i = 0;
+	while (s[i])
+	{
+		free(s[i]);
+		i++;
+	}
+	free(s);
+	return (0);
+}
 
 int	get_len(char const *s, char set, int *i)
 {
@@ -72,7 +86,7 @@ char	**ft_split(char const *s, char c)
 	{
 		ptr[idx++] = alloc_str(s, c, &word_len);
 		if (!ptr[idx - 1])
-			free(ptr[idx - 1]);
+			return (freeall(ptr));
 	}
 	ptr[idx] = 0;
 	return (ptr);

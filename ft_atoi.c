@@ -6,16 +6,16 @@
 /*   By: hyunwkim <hyunwkim@42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/04 13:15:47 by hyunwkim          #+#    #+#             */
-/*   Updated: 2021/05/20 16:32:26 by hyunwkim         ###   ########.fr       */
+/*   Updated: 2021/06/08 15:09:07 by hyunwkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-long long		to_long(const char *str, int sign)
+static long long	to_long(const char *str, int sign)
 {
-	long long	num;
-	int			i;
+	long long		num;
+	int				i;
 
 	num = 0;
 	i = 0;
@@ -35,9 +35,9 @@ long long		to_long(const char *str, int sign)
 	return (num * sign);
 }
 
-int				ft_atoi(const char *str)
+int	ft_atoi(const char *str)
 {
-	int			sign;
+	int				sign;
 
 	sign = 1;
 	while (*str == ' ' || (9 <= *str && *str <= 13))

@@ -6,9 +6,11 @@
 /*   By: hyunwkim <hyunwkim@42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/04 14:14:26 by hyunwkim          #+#    #+#             */
-/*   Updated: 2021/05/10 16:50:04 by hyunwkim         ###   ########.fr       */
+/*   Updated: 2021/06/08 15:16:14 by hyunwkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 char	*ft_strchr(const char *s, int c)
 {

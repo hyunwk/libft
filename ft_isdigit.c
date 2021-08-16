@@ -6,9 +6,11 @@
 /*   By: hyunwkim <hyunwkim@42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/04 13:11:37 by hyunwkim          #+#    #+#             */
-/*   Updated: 2021/05/20 18:59:55 by hyunwkim         ###   ########.fr       */
+/*   Updated: 2021/06/08 15:18:12 by hyunwkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 int	ft_isdigit(int c)
 {
